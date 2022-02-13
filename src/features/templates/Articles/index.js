@@ -1,8 +1,6 @@
-import React, { createElement, Fragment } from "react"
+import React, { createElement } from "react"
 
-import { Main } from "components/Main"
-import { Navigation } from "components/Navigation"
-import * as wrapPageElementClassNames from "components/WrapPageElement/wrapPageElement.module.css"
+import { GridLayout } from "components/GridLayout"
 import { RenderHtmlAst } from "features/ast/RenderHtmlAst"
 
 export function Articles({
@@ -13,14 +11,10 @@ export function Articles({
   },
 }) {
   return (
-    <Fragment>
-      <Navigation className={wrapPageElementClassNames["header"]} />
-      <Main>
-        {createElement(RenderHtmlAst, {
-          // components: indexComponents,
-          htmlAst: articlesHtmlAst,
-        })}
-      </Main>
-    </Fragment>
+    <GridLayout>
+      {createElement(RenderHtmlAst, {
+        htmlAst: articlesHtmlAst,
+      })}
+    </GridLayout>
   )
 }

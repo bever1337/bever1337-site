@@ -1,3 +1,1 @@
-import { WrapPageElement } from "./src/components/WrapPageElement"
-
-export const wrapPageElement = WrapPageElement
+import "./src/components/WrapPageElement/index.css"

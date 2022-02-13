@@ -1,11 +1,29 @@
 .main {
   background-color: #f8ffde;
   border: 1px solid #ffd1d1;
+  grid-area: body;
   margin: 0 auto;
   max-width: 32em;
   padding: 0 1em;
 }
 
+.footer {
+  grid-area: footer;
+}
+
 .main__heading {
   text-align: center;
+}
+
+.wrapper {
+  align-items: start;
+  display: grid;
+  box-sizing: border-box;
+  gap: 1rem;
+  grid-template:
+    "body" 1fr
+    "footer" auto / minmax(auto, 48em);
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
 }

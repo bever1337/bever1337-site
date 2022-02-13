@@ -11,21 +11,21 @@ export const pages = {
   files: [
     {
       label: "Index",
-      name: "index-page",
+      name: "index",
       file: "modules/data/page/index.md",
       create: true,
       fields,
     },
     {
       label: "About",
-      name: "about-page",
+      name: "about",
       file: "modules/data/page/about.md",
       create: true,
       fields,
     },
     {
       label: "Articles",
-      name: "articles-page",
+      name: "articles",
       file: "modules/data/page/articles.md",
       create: true,
       fields,

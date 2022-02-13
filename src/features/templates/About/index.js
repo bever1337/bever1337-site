@@ -1,10 +1,7 @@
-import React, { createElement, Fragment } from "react"
+import React, { createElement } from "react"
 
-import { Main } from "components/Main"
-import { Navigation } from "components/Navigation"
-import * as wrapPageElementClassNames from "components/WrapPageElement/wrapPageElement.module.css"
+import { GridLayout } from "components/GridLayout"
 import { RenderHtmlAst } from "features/ast/RenderHtmlAst"
-// import { elementComponentFactory } from "features/ast/utils"
 
 export function About({
   data: {
@@ -14,14 +11,10 @@ export function About({
   },
 }) {
   return (
-    <Fragment>
-      <Navigation className={wrapPageElementClassNames["header"]} />
-      <Main>
-        {createElement(RenderHtmlAst, {
-          // components: indexComponents,
-          htmlAst: aboutHtmlAst,
-        })}
-      </Main>
-    </Fragment>
+    <GridLayout>
+      {createElement(RenderHtmlAst, {
+        htmlAst: aboutHtmlAst,
+      })}
+    </GridLayout>
   )
 }

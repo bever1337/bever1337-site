@@ -1,12 +1,13 @@
+import PropTypes from "prop-types"
 import React from "react"
 
-import * as wrapPageElementClassNames from "components/WrapPageElement/wrapPageElement.module.css"
+// import * as footerClassNames from "./footer.module.css"
 
 import packageJson from "../../../package.json"
 
-export function Footer() {
+export function Footer({ className = "" }) {
   return (
-    <footer className={wrapPageElementClassNames["footer"]}>
+    <footer className={`${className} `}>
       <hr />
       <p>
         {`${packageJson.name} v${packageJson.version}, revision: ${process.env.GATSBY_GIT_HASH}`}
@@ -20,4 +21,8 @@ export function Footer() {
       </a>
     </footer>
   )
+}
+
+Footer.propTypes = {
+  className: PropTypes.string,
 }

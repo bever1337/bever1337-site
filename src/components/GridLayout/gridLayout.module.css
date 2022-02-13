@@ -7,6 +7,7 @@
     "header" auto
     "body" 1fr
     "footer" auto / auto;
+  justify-content: center;
   min-height: 100vh;
   padding: 1rem;
 }
@@ -15,7 +16,7 @@
   .wrapper {
     grid-template:
       "header body" 1fr
-      "header footer" auto / auto 1fr;
+      "header footer" auto / 24em minmax(auto, 48em);
   }
 }
 
@@ -25,6 +26,7 @@
 
 .body {
   grid-area: body;
+  max-width: 48em;
 }
 
 .footer {
