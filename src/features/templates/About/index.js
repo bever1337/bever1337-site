@@ -1,5 +1,6 @@
 import React, { createElement, Fragment } from "react"
 
+import { Main } from "components/Main"
 import { Navigation } from "components/Navigation"
 import { RenderHtmlAst } from "features/ast/RenderHtmlAst"
 // import { elementComponentFactory } from "features/ast/utils"
@@ -14,12 +15,12 @@ export function About({
   return (
     <Fragment>
       <Navigation />
-      <main>
+      <Main>
         {createElement(RenderHtmlAst, {
           // components: indexComponents,
           htmlAst: aboutHtmlAst,
         })}
-      </main>
+      </Main>
     </Fragment>
   )
 }

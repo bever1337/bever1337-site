@@ -1,0 +1,32 @@
+.wrapper {
+  align-items: start;
+  display: grid;
+  box-sizing: border-box;
+  gap: 1rem;
+  grid-template:
+    "header" auto
+    "body" 1fr
+    "footer" auto / auto;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+@media (min-width: 72em) {
+  .wrapper {
+    grid-template:
+      "header body" 1fr
+      "header footer" auto / auto 1fr;
+  }
+}
+
+.header {
+  grid-area: header;
+}
+
+.body {
+  grid-area: body;
+}
+
+.footer {
+  grid-area: footer;
+}

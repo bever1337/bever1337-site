@@ -1,3 +1,7 @@
+.nav {
+  max-width: 24em;
+}
+
 .nav__list {
   display: grid;
   gap: 0.25em;

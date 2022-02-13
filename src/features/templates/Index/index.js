@@ -1,4 +1,4 @@
-import { createElement } from "react"
+import { createElement, Fragment } from "react"
 
 import * as indexClassNames from "./index.module.css"
 
@@ -20,12 +20,17 @@ export function Index({
   },
 }) {
   return createElement(
-    "main",
-    { className: indexClassNames["main"] },
-    createElement(RenderHtmlAst, {
-      components: indexComponents,
-      htmlAst: indexHtmlAst,
-    }),
-    createElement(Navigation)
+    Fragment,
+    undefined,
+    createElement("div"),
+    createElement(
+      "main",
+      { className: indexClassNames["main"] },
+      createElement(RenderHtmlAst, {
+        components: indexComponents,
+        htmlAst: indexHtmlAst,
+      }),
+      createElement(Navigation)
+    )
   )
 }

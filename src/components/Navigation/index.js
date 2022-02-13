@@ -24,7 +24,7 @@ function NavigationRender({
   },
 }) {
   return (
-    <nav>
+    <nav className={navigationClassNames["nav"]}>
       {createElement(RenderHtmlAst, {
         components: navigationComponents,
         htmlAst: navigationItemsHtmlAst,
