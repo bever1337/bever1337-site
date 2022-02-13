@@ -6,6 +6,13 @@ export const created = {
   widget: "datetime",
 }
 
+export const image = {
+  allow_multiple: true,
+  label: "Image",
+  name: "image",
+  widget: "image",
+}
+
 export const title = {
   label: "Title",
   name: "title",

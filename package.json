@@ -18,7 +18,9 @@
   "devDependencies": {
     "eslint-config-react-app": "^7.0.0",
     "gatsby-cli": "^4.7.0",
+    "gatsby-plugin-sharp": "^4.7.0",
     "gatsby-remark-embed-gist": "^1.2.1",
+    "gatsby-remark-images": "^6.7.0",
     "gatsby-source-filesystem": "^4.7.0",
     "gatsby-transformer-remark": "^5.7.0",
     "gh-pages": "^3.2.3"

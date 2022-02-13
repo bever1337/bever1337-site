@@ -1,10 +1,10 @@
-import { body, created, title, updated } from "./fields"
+import { body, created, image, title, updated } from "./fields"
 
 const fields = [body, created, updated]
 
 const articles = {
   create: true,
-  fields: fields.concat([title]),
+  fields: fields.concat([title, { ...image, media_folder: "./" }]),
   folder: "modules/data/article",
   label: "Articles",
   label_singular: "Article",

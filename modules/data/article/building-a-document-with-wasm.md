@@ -38,7 +38,7 @@ Let's park that train of thought in the yard because these requirements from "re
 | 3. re-write JavaScript boilerplate ad nauseam      | (Actually we're gluttons for repetition.)                                                                                                                                                                                    |
 | 4. sacrifice type safety                           | The frontend community is so worried about developing in JS that we could sing annual dirges for the JS-a-likes that have come and gone. JS compilers and transpilers are downloaded approximately 30 million times a month. |
 
-![graph comparing js-a-likes](npm-trends-screenshot.png)
+![graph comparing js-a-likes](./npm-trends-screenshot.png)
 
 [Made with npmtrends](https://www.npmtrends.com/coffeescript-vs-elm-vs-purescript-vs-typescript-vs-svelte)
 
