@@ -1,3 +1,4 @@
+import { withPrefix } from "gatsby"
 import PropTypes from "prop-types"
 import React, { Fragment } from "react"
 import { Helmet } from "react-helmet"
@@ -8,21 +9,24 @@ export function WrapPageElement({ element }) {
   return (
     <Fragment>
       <Helmet title="@bever1337" defer={false}>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link href={withPrefix("/favicon.ico")} rel="icon" sizes="any" />
         <link
+          href={withPrefix("/apple-touch-icon.png")}
+          rel="apple-touch-icon"
+        />
+        <link
+          href={withPrefix("/favicon-16x16.png")}
           rel="icon"
-          type="image/png"
-          href="/favicon-16x16.png"
           sizes="16x16"
+          type="image/png"
         />
         <link
+          href={withPrefix("/favicon-32x32.png")}
+          sizes="32x32"
           rel="icon"
           type="image/png"
-          href="/favicon-32x32.png"
-          sizes="32x32"
         />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link href={withPrefix("/site.webmanifest")} rel="manifest" />
       </Helmet>
       {element}
     </Fragment>
