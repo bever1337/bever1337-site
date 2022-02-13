@@ -1,0 +1,10 @@
+.nav__list {
+  display: grid;
+  gap: 0.25em;
+  grid-template-columns: minmax(auto, 0.2fr) 0.8fr;
+  padding-right: 2.5em;
+}
+
+.nav__item {
+  display: contents;
+}

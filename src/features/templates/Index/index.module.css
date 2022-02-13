@@ -1,0 +1,11 @@
+.main {
+  background-color: #f8ffde;
+  border: 1px solid #ffd1d1;
+  margin: 0 auto;
+  max-width: 32em;
+  padding: 0 1em;
+}
+
+.main__heading {
+  text-align: center;
+}
