@@ -2,6 +2,9 @@ import React, { createElement } from "react"
 
 import { GridLayout } from "components/GridLayout"
 import { RenderHtmlAst } from "features/ast/RenderHtmlAst"
+import { A } from "features/ast/components"
+
+const articleComponents = { a: A }
 
 function Article({
   pageContext: {
@@ -17,7 +20,7 @@ function Article({
         published: {new Date(created).toLocaleString()},<br />
         last updated: {new Date(updated).toLocaleString()}
       </p>
-      {createElement(RenderHtmlAst, { htmlAst })}{" "}
+      {createElement(RenderHtmlAst, { components: articleComponents, htmlAst })}{" "}
     </GridLayout>
   )
 }
