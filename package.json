@@ -8,7 +8,7 @@
     "url": "https://github.com/bever1337/bever1337-site"
   },
   "scripts": {
-    "build:pages": "npm run gatsby -- build --prefix-paths && gh-pages -d public",
+    "build:pages": "GATSBY_GIT_HASH=$(git rev-parse --short HEAD) npm run gatsby -- build --prefix-paths && gh-pages -d public",
     "develop": "GATSBY_GIT_HASH=$(git rev-parse --short HEAD) npm run gatsby -- develop",
     "gatsby": "gatsby",
     "prebuild:pages": "npm run gatsby -- clean"
