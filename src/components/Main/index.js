@@ -3,14 +3,15 @@ import { createElement } from "react"
 
 import * as wrapPageElementClassNames from "components/WrapPageElement/wrapPageElement.module.css"
 
-export function Main({ children }) {
+export function Main({ children, className = "" }) {
   return createElement(
     "main",
-    { className: wrapPageElementClassNames["body"] },
+    { className: `${className} ${wrapPageElementClassNames["body"]}` },
     children
   )
 }
 
 Main.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.element.isRequired,
+  className: PropTypes.string,
 }

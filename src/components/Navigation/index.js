@@ -1,4 +1,5 @@
 import { graphql, Link, StaticQuery } from "gatsby"
+import PropTypes from "prop-types"
 import React, { createElement } from "react"
 
 import { RenderHtmlAst } from "features/ast/RenderHtmlAst"
@@ -18,22 +19,7 @@ const navigationComponents = {
   }),
 }
 
-function NavigationRender({
-  navigationItemsAst: {
-    nodes: [{ htmlAst: navigationItemsHtmlAst }],
-  },
-}) {
-  return (
-    <nav className={navigationClassNames["nav"]}>
-      {createElement(RenderHtmlAst, {
-        components: navigationComponents,
-        htmlAst: navigationItemsHtmlAst,
-      })}
-    </nav>
-  )
-}
-
-export function Navigation() {
+export function Navigation({ className = "" }) {
   return (
     <StaticQuery
       query={graphql`
@@ -49,7 +35,24 @@ export function Navigation() {
           }
         }
       `}
-      render={NavigationRender}
+      render={function NavigationRender({
+        navigationItemsAst: {
+          nodes: [{ htmlAst: navigationItemsHtmlAst }],
+        },
+      }) {
+        return (
+          <nav className={`${className} ${navigationClassNames["nav"]}`}>
+            {createElement(RenderHtmlAst, {
+              components: navigationComponents,
+              htmlAst: navigationItemsHtmlAst,
+            })}
+          </nav>
+        )
+      }}
     />
   )
+}
+
+Navigation.propTypes = {
+  className: PropTypes.string,
 }

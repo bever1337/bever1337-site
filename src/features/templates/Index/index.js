@@ -2,7 +2,9 @@ import { createElement, Fragment } from "react"
 
 import * as indexClassNames from "./index.module.css"
 
+import { Main } from "components/Main"
 import { Navigation } from "components/Navigation"
+import * as wrapPageElementClassNames from "components/WrapPageElement/wrapPageElement.module.css"
 import { RenderHtmlAst } from "features/ast/RenderHtmlAst"
 import { elementComponentFactory } from "features/ast/utils"
 
@@ -22,9 +24,9 @@ export function Index({
   return createElement(
     Fragment,
     undefined,
-    createElement("div"),
+    createElement("div", { className: wrapPageElementClassNames["header"] }),
     createElement(
-      "main",
+      Main,
       { className: indexClassNames["main"] },
       createElement(RenderHtmlAst, {
         components: indexComponents,
