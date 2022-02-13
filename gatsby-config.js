@@ -2,11 +2,11 @@ require("dotenv")
 
 module.exports = {
   siteMetadata: {
+    hash: process.env.GIT_HASH,
     title: "I Love the Internet",
-    description:
-      "Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.",
-    author: "@gatsbyjs",
-    siteUrl: "https://gatsbystarterdefaultsource.gatsbyjs.io/",
+    // description: "Foo Bar Baz",
+    author: "Bever1337 <bever1337@posteo.net>",
+    // siteUrl: "https://example.com/",
   },
   plugins: [
     {

@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "develop": "GIT_HASH=$(git rev-parse --short HEAD) npm run gatsby -- develop",
     "gatsby": "gatsby"
   },
-  "author": "",
-  "license": "MIT",
+  "author": "Bever1337 <bever1337@posteo.net>",
+  "license": "UNLICENSED",
   "devDependencies": {
     "eslint-config-react-app": "^7.0.0",
     "gatsby-cli": "^4.7.0",
