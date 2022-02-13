@@ -1,9 +1,14 @@
 ---
-title: about bever1337
 updated: 2022-02-13T01:04:43.349Z
 created: 2022-02-13T01:04:44.021Z
 ---
 
 # about
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+## this site
+
+This site is built using a [JAMstack](https://jamstack.org/what-is-jamstack/):
+
+- Javascript -- [NodeJS](https://nodejs.org/en/) + [GatsbyJS](https://www.gatsbyjs.com/) pre-rendering with a progressive SPA
+- APIs -- a self-hosted [Netlify](https://www.netlifycms.org/) webapp leverages a [Git](https://git-scm.com/) backend on [Github](https://github.com/) to provide a CMS
+- Markup -- there's markup involved! Lots of it! The build process consumes markdown from the CMS and outputs HTML.

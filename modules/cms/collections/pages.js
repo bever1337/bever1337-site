@@ -1,5 +1,4 @@
 const fields = [
-  { label: "Title", name: "title", widget: "string" },
   { label: "Last Updated", name: "updated", widget: "datetime" },
   { label: "Publish Date", name: "created", widget: "datetime" },
   { label: "Body", name: "body", widget: "markdown" },

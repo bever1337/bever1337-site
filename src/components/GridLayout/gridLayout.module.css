@@ -6,7 +6,7 @@
   grid-template:
     "header" auto
     "body" 1fr
-    "footer" auto / auto;
+    "footer" auto / minmax(auto, 48em);
   justify-content: center;
   min-height: 100vh;
   padding: 1rem;

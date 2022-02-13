@@ -2,6 +2,14 @@ import React, { createElement } from "react"
 
 import { GridLayout } from "components/GridLayout"
 import { RenderHtmlAst } from "features/ast/RenderHtmlAst"
+import { elementComponentFactory } from "features/ast/utils"
+
+const aboutComponents = {
+  a: elementComponentFactory("a", {
+    rel: "noreferrer noopener",
+    target: "_self",
+  }),
+}
 
 export function About({
   data: {
@@ -13,6 +21,7 @@ export function About({
   return (
     <GridLayout>
       {createElement(RenderHtmlAst, {
+        components: aboutComponents,
         htmlAst: aboutHtmlAst,
       })}
     </GridLayout>
