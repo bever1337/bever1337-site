@@ -29,5 +29,12 @@ export const pages = {
       create: true,
       fields,
     },
+    {
+      label: "README",
+      name: "readme",
+      file: "README.md",
+      create: false,
+      fields,
+    },
   ],
 }
