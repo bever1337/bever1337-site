@@ -16,13 +16,6 @@ const pages = {
   name: "pages",
   files: [
     {
-      label: "Navigation",
-      name: "navigation",
-      file: "modules/data/navigation-items.md",
-      create: true,
-      fields,
-    },
-    {
       label: "Index",
       name: "index",
       file: "modules/data/page/index.md",

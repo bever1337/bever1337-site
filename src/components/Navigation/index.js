@@ -1,55 +1,28 @@
-import { graphql, Link, StaticQuery } from "gatsby"
+import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React, { createElement } from "react"
-
-import { RenderHtmlAst } from "features/ast/RenderHtmlAst"
-import { elementComponentFactory } from "features/ast/utils"
+import React from "react"
 
 import * as navigationClassNames from "./navigation.module.css"
 
-const navigationComponents = {
-  a({ children, href }) {
-    return createElement(Link, { to: href }, children)
-  },
-  li: elementComponentFactory("li", {
-    className: navigationClassNames["nav__item"],
-  }),
-  ul: elementComponentFactory("ul", {
-    className: navigationClassNames["nav__list"],
-  }),
-}
+const navigationLinkData = [
+  ["/index", "/", "front page"],
+  ["/articles", "/articles", "fake programmer thoughts"],
+  ["/about", "/about", "about bever1337"],
+  ["/licenses", "/licenses", ""],
+]
 
 export function Navigation({ className = "" }) {
   return (
-    <StaticQuery
-      query={graphql`
-        query NavigationQuery {
-          navigationItemsAst: allMarkdownRemark(
-            filter: {
-              fileAbsolutePath: { glob: "**/modules/data/navigation-items.md" }
-            }
-          ) {
-            nodes {
-              htmlAst
-            }
-          }
-        }
-      `}
-      render={function NavigationRender({
-        navigationItemsAst: {
-          nodes: [{ htmlAst: navigationItemsHtmlAst }],
-        },
-      }) {
-        return (
-          <nav className={`${className} ${navigationClassNames["nav"]}`}>
-            {createElement(RenderHtmlAst, {
-              components: navigationComponents,
-              htmlAst: navigationItemsHtmlAst,
-            })}
-          </nav>
-        )
-      }}
-    />
+    <nav className={`${className} ${navigationClassNames["nav"]}`}>
+      <ul className={navigationClassNames["nav__list"]}>
+        {navigationLinkData.map(([linkChildren, to, description]) => (
+          <li className={navigationClassNames["nav__item"]} key={to}>
+            <Link to={to}>{linkChildren}</Link>
+            <span>{description}</span>
+          </li>
+        ))}
+      </ul>
+    </nav>
   )
 }
 
