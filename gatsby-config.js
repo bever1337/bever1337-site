@@ -1,6 +1,13 @@
 require("dotenv")
 
+const nodeEnv = process.env.NODE_ENV
+const cmsPlugin = {
+  resolve: "gatsby-plugin-netlify-cms",
+  options: { manualInit: true, modulePath: `${__dirname}/modules/cms` },
+}
+
 module.exports = {
+  pathPrefix: "bever1337-site",
   siteMetadata: {
     hash: process.env.GIT_HASH,
     title: "I Love the Internet",
@@ -9,10 +16,6 @@ module.exports = {
     // siteUrl: "https://example.com/",
   },
   plugins: [
-    {
-      resolve: "gatsby-plugin-netlify-cms",
-      options: { manualInit: true, modulePath: `${__dirname}/modules/cms` },
-    },
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -49,5 +52,5 @@ module.exports = {
         ],
       },
     },
-  ],
+  ].concat(nodeEnv === "development" ? [cmsPlugin] : []),
 }
