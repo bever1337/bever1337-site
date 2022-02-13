@@ -32,7 +32,7 @@ In the pretend hierarchy of real programmers, web developers are the lowest. I s
 So let's park that train of thought in the yard because it's easy to acknowledge these requirements from "real" programmers are reasonable and familiar to frontend devs. It's easy to find tweets and replies dripping with the same disdain:
 
 1. The browser API is imperative and messy. ["I love the DOM but most developers would rather jump off a bridge than write some logic to walk a DOM."](https://news.ycombinator.com/item?id=29943444)
-1. Package bloat is such a well-known issue, [there's even cool web apps to scare you straight](https://bundlephobia.com/).
+1. Package bloat is such a well-known issue, [there are even cool web apps to scare you straight](https://bundlephobia.com/).
 1. (Actually we're gluttons for repetition. I want to ignore point 3.)
 1. "Modern applications should use TypeScript for safety. Writing in JS is _dangerous_." This is a fake quote, but I stand by the joke.
 
@@ -62,9 +62,9 @@ import "...";
 
 ### Hello, world!
 
-What's the point if we can't insert `<h1>Hello, world!</h1>` into the document? In the current landscape, we require more JavaScript glue because the Document API is not exposed to WASM. Neither is fetch, Navigator, or any other browser API that frontend developers rely on. WASM makes no assumptions about the environment! This [WebAssembly ticket](https://github.com/WebAssembly/proposals/issues/71) includes a conversation between a contributor and a developer with the same confusion as me.
+What's the point if we can't insert `<h1>Hello, world!</h1>` into the document? In the current landscape, we require more JavaScript glue because the Document API is not exposed to WASM. Neither is fetch, Navigator or any other browser API that frontend developers rely on. WASM makes no assumptions about the environment! This [WebAssembly ticket](https://github.com/WebAssembly/proposals/issues/71) includes a conversation between a contributor and a developer with the same confusion as me.
 
-Let's talk more about that tasty, tasty glue. Rust developers may be familiar with the `wasm-bindgen` crate which includes the `web-sys` feature. These bind WASM and web API types to rust code, allowing developers to develop against API like `window` and `Navigator`. At runtime, a JS shim proxies calls between the WASM bytecode and JS API. As a result, developers can only assert their WASM is safe, but the other side of the JS boundary is unsafe. (I'm sorry to report no JS compiler will fix this either.)
+Let's talk more about that tasty, tasty glue. Rust developers may be familiar with the `wasm-bindgen` crate which includes the `web-sys` feature. These bind WASM and web API types to rust code, allowing developers to develop against APIs like `window` and `Navigator`. At runtime, a JS shim proxies calls between the WASM bytecode and JS API. As a result, developers can only assert their WASM is safe, but the other side of the JS boundary is unsafe. (I'm sorry to report no JS compiler will fix this either.)
 
 Thankfully, some folks are hard at work on a solution:
 
@@ -76,18 +76,18 @@ I think we just ditched JavaScript.
 
 ### One loose thread
 
-It feels important to cover concurrency in the browser. I don't make it through a single day without using generators, promises, callbacks, and all the syntactic sugar that helps the medicine go down. And still when I first started chewing on these problems, I panicked! How are we going to handle concurrent rendering? Won't someone think of the workers? I sat out to prove there were risks with handing the DOM over to WASM. 30 seconds later my brain re-engaged.
+It feels important to cover concurrency in the browser. I don't make it through a single day without using generators, promises, callbacks, and all the syntactic sugar that helps the medicine go down. And still, when I first started chewing on these problems, I panicked! How are we going to handle concurrent rendering? Won't someone think of the workers? I sat out to prove there were risks with handing the DOM over to WASM. 30 seconds later my brain re-engaged.
 
 Let's review the highlights of the JS call stack so nobody else feels as silly as me:
 
 1. JavaScript is single-threaded. All operations go on a call stack.
 1. Synchronous operations always block
 1. Asynchronous operations never block. `await` (syntax sugar on promises) and `yield` are not comparable to futures because the 'thread' (call stack) immediately continues in JS. "Don't block the DOM" is a web developer mantra.
-1. Asynchronous behavior comes from outside the system in the form of events, e.g. a websocket message, and callbacks, e.g. request animation frame.
+1. Asynchronous behavior comes from outside the system in the form of events, e.g. a WebSocket message, and callbacks, e.g. request animation frame.
 1. The developer can create or extend asynchronous behavior using callbacks, promises, and (usually) timer API.
 1. The only way to introduce parallelism into the application is by creating the first Web Worker from the main thread. (See this excellent [blog post](https://nolanlawson.com/2015/09/29/indexeddb-websql-localstorage-what-blocks-the-dom/) about how most storage API implementations were actually blocking.)
 1. Workers can create other workers
 1. Workers can ONLY communicate through a scheduled messaging API
 1. Workers do not have direct access to the DOM
 
-Hopefully it's clear that scheduling has already been provided by the browser. Even in a future of WASM modules, a glorious land with no JS, we can safely write 'Hello, world!' from our main WASM module while offloading larger or asynchronous compute to other threads.
+Hopefully, it's clear that scheduling has already been provided by the browser. Even in the future of WASM modules, a glorious land with no JS, we can safely write 'Hello, world!' from our main WASM module while offloading larger or asynchronous compute to other threads.
