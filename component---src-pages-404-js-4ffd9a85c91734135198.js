@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunk_bever1337_bever1337_site=self.webpackChunk_bever1337_bever1337_site||[]).push([[883],{733:function(e,n,r){r.r(n),r.d(n,{default:function(){return u}});var t=r(7294);var u=function(){return(0,t.createElement)("h1",null,"not found")}}}]);
+//# sourceMappingURL=component---src-pages-404-js-4ffd9a85c91734135198.js.map
