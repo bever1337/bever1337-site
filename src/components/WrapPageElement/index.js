@@ -7,7 +7,7 @@ import "./index.css"
 export function WrapPageElement({ element }) {
   return (
     <Fragment>
-      <Helmet title="foo bar" defer={false}>
+      <Helmet title="@bever1337" defer={false}>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link
