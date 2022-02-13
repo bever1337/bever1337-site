@@ -1,6 +1,6 @@
 import { graphql } from "gatsby"
 
-import { Index } from "features/templates/Index"
+import { Index } from "components/Index"
 
 export default Index
 

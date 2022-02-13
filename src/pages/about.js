@@ -1,6 +1,6 @@
 import { graphql } from "gatsby"
 
-import { About } from "features/templates/About"
+import { About } from "components/About"
 
 export default About
 

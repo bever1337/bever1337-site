@@ -1,3 +1,3 @@
-import { NotFound } from "features/templates/NotFound"
+import { NotFound } from "components/NotFound"
 
 export default NotFound

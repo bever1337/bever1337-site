@@ -1,5 +1,4 @@
-import { pages } from "./collections/pages"
-import { navigation } from "./collections/navigation"
+import { collections } from "./collections"
 
 export const config = {
   backend: {
@@ -14,5 +13,5 @@ export const config = {
     proxy_url: "http://localhost:8081/api/v1",
   },
   media_folder: "static",
-  collections: [pages, navigation],
+  collections,
 }

@@ -4,25 +4,25 @@ import { GridLayout } from "components/GridLayout"
 import { RenderHtmlAst } from "features/ast/RenderHtmlAst"
 import { elementComponentFactory } from "features/ast/utils"
 
-const aboutComponents = {
+const licensesComponents = {
   a: elementComponentFactory("a", {
     rel: "noreferrer noopener",
     target: "_self",
   }),
 }
 
-export function About({
+export function Licenses({
   data: {
-    aboutMarkdown: {
-      nodes: [{ htmlAst: aboutHtmlAst }],
+    licensesMarkdown: {
+      nodes: [{ htmlAst }],
     },
   },
 }) {
   return (
     <GridLayout>
       {createElement(RenderHtmlAst, {
-        components: aboutComponents,
-        htmlAst: aboutHtmlAst,
+        components: licensesComponents,
+        htmlAst,
       })}
     </GridLayout>
   )

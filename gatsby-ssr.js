@@ -1,1 +1,5 @@
-require("./src/components/WrapPageElement/index.css")
+const { WrapPageElement } = require("./src/components/WrapPageElement")
+
+module.exports = {
+  wrapPageElement: WrapPageElement,
+}

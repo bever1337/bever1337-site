@@ -6,3 +6,4 @@ created: 2022-02-12T22:17:42.963Z
 - [/index](/)<span>front page</span>
 - [/articles](/articles)<span>fake programmer thoughts</span>
 - [/about](/about)<span>about bever1337</span>
+- [/licenses](/licenses)<span></span>
