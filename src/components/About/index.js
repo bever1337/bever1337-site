@@ -2,13 +2,10 @@ import React, { createElement } from "react"
 
 import { GridLayout } from "components/GridLayout"
 import { RenderHtmlAst } from "features/ast/RenderHtmlAst"
-import { elementComponentFactory } from "features/ast/utils"
+import { A } from "features/ast/components"
 
 const aboutComponents = {
-  a: elementComponentFactory("a", {
-    rel: "noreferrer noopener",
-    target: "_self",
-  }),
+  a: A,
 }
 
 export function About({
