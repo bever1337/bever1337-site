@@ -1,6 +1,6 @@
 ---
 created: 2022-02-13T05:02:29.239Z
-updated: 2022-02-13T19:33:59.273Z
+updated: 2022-02-13T19:51:43.132Z
 title: Building a document with WASM
 ---
 
@@ -31,13 +31,16 @@ In the pretend hierarchy of real programmers, web developers are near the bottom
 
 Let's park that train of thought in the yard because these requirements from "real" programmers are reasonable and familiar to frontend devs:
 
-| Things "real" programmers don't want to do... | sound familiar to frontend developers |
-| --- | ----------- |
-| 1. learn JavaScript and JS Browser API | ["I love the DOM but most developers would rather jump off a bridge than write some logic to walk a DOM."](https://news.ycombinator.com/item?id=29943444) |
-| 2. install JS frameworks to accomplish their task. | [Bundlephobia](https://bundlephobia.com/) |
-| 3. re-write JavaScript boilerplate ad nauseam | (Actually we're gluttons for repetition.) |
-| 4. sacrifice type safety | The frontend community is so worried about developing in JS that we sing annual dirges for the JS-a-likes that have come and gone  |
+| Things "real" programmers don't want to do...      | sound familiar to frontend developers                                                                                                                                                                                        |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1. learn JavaScript and JS Browser API             | ["I love the DOM but most developers would rather jump off a bridge than write some logic to walk a DOM."](https://news.ycombinator.com/item?id=29943444)                                                                    |
+| 2. install JS frameworks to accomplish their task. | [Bundlephobia](https://bundlephobia.com/)                                                                                                                                                                                    |
+| 3. re-write JavaScript boilerplate ad nauseam      | (Actually we're gluttons for repetition.)                                                                                                                                                                                    |
+| 4. sacrifice type safety                           | The frontend community is so worried about developing in JS that we could sing annual dirges for the JS-a-likes that have come and gone. JS compilers and transpilers are downloaded approximately 30 million times a month. |
 
+![graph comparing js-a-likes](/npm-trends-screenshot.png)
+
+[Made with npmtrends](https://www.npmtrends.com/coffeescript-vs-elm-vs-purescript-vs-typescript-vs-svelte)
 
 ### The current landscape
 
@@ -61,7 +64,7 @@ Module loading:
 ```
 
 ```javascript
-import "...";
+import "..."
 ```
 
 ### But can I "Hello, world!"?
