@@ -11,6 +11,7 @@ export const image = {
   label: "Image",
   name: "image",
   widget: "image",
+  required: false,
 }
 
 export const title = {

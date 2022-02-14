@@ -36,7 +36,7 @@ Let's park that train of thought in the yard because these requirements from "re
 | 1. learn JavaScript and JS Browser API             | ["I love the DOM but most developers would rather jump off a bridge than write some logic to walk a DOM."](https://news.ycombinator.com/item?id=29943444)                                                                    |
 | 2. install JS frameworks to accomplish their task. | [Bundlephobia](https://bundlephobia.com/)                                                                                                                                                                                    |
 | 3. re-write JavaScript boilerplate ad nauseam      | (Actually we're gluttons for repetition.)                                                                                                                                                                                    |
-| 4. sacrifice type safety                           | The frontend community is so worried about developing in JS that we could sing annual dirges for the JS-a-likes that have come and gone. JS compilers and transpilers are downloaded approximately 30 million times a month. |
+| 4. sacrifice type safety                           | The frontend community is so worried about developing in JS that we could sing annual dirges for the JS-a-likes that have come and gone. JS compilers and transpilers are downloaded approximately 30 million times a dat. |
 
 ![graph comparing js-a-likes](./npm-trends-screenshot.png)
 
