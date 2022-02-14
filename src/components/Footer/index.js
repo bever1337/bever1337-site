@@ -10,7 +10,8 @@ export function Footer({ className = "" }) {
     <footer className={`${className} `}>
       <hr />
       <p>
-        {`${packageJson.name} v${packageJson.version}, revision: ${process.env.GATSBY_GIT_HASH}`}
+        {`${packageJson.name} v${packageJson.version} revision: ${process.env.GATSBY_GIT_HASH}`}
+        , Copyright (C) 2022 Bever1337
       </p>
       <a
         href={packageJson.repository.url}
@@ -18,6 +19,13 @@ export function Footer({ className = "" }) {
         target="_self"
       >
         source
+      </a>{" "}
+      <a
+        href={`${packageJson.repository.url}/blob/main/LICENSE`}
+        rel="noreferrer noopener"
+        target="_self"
+      >
+        license
       </a>
     </footer>
   )
