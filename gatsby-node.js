@@ -12,6 +12,7 @@ exports.createPages = async function createPages({
         filter: {
           fileAbsolutePath: { regex: "/modules/data/article/.+[.]md/" }
         }
+        sort: { fields: frontmatter___created, order: DESC }
       ) {
         nodes {
           excerptAst
