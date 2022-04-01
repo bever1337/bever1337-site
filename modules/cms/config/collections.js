@@ -8,6 +8,7 @@ const articles = {
   folder: "modules/data/article",
   label: "Articles",
   label_singular: "Article",
+  media_folder: "",
   name: "articles",
 }
 
