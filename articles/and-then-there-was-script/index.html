@@ -1,0 +1,255 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 4.7.1"/><style data-href="/bever1337-site/styles.d50bff23e900dad1c52b.css" data-identity="gatsby-global-css">body,html{margin:0;padding:0}.index-module--main--lRvkM{background-color:#fff1e6;border:1px solid #fde4cf;box-sizing:border-box;grid-area:body;margin:0 auto;max-width:32em;padding:0 1em;width:100%}.index-module--footer--tvjnS{grid-area:footer}.index-module--main__heading--Zg0Aq{text-align:center}.index-module--wrapper--H9r\+D{align-items:start;box-sizing:border-box;display:grid;gap:1rem;grid-template:"body" 1fr "footer" auto/minmax(auto,48em);justify-content:center;min-height:100vh;padding:1rem}.navigation-module--nav--uUStU{max-width:24em}.navigation-module--nav__list--JBqP\+{display:grid;gap:.25em;grid-template-columns:minmax(auto,.2fr) .8fr;padding-right:2.5em}.navigation-module--nav__item--HiHdd{display:contents}.gridLayout-module--wrapper--YhU-z{align-items:start;box-sizing:border-box;display:grid;gap:1rem;grid-template:"header" auto "body" 1fr "footer" auto/minmax(auto,48em);justify-content:center;min-height:100vh;padding:1rem}@media (min-width:72em){.gridLayout-module--wrapper--YhU-z{grid-template:"header body" 1fr "header footer" auto/24em minmax(auto,48em)}}.gridLayout-module--header--qSmcj{grid-area:header}.gridLayout-module--body--m1lvC{grid-area:body;max-width:48em}.gridLayout-module--footer--dV8Ep{grid-area:footer}</style><link as="script" rel="preload" href="/bever1337-site/webpack-runtime-bfb457c7f5acd796a58a.js"/><link as="script" rel="preload" href="/bever1337-site/framework-76a77e396abedac0f814.js"/><link as="script" rel="preload" href="/bever1337-site/app-87ddfbab5f29060bd044.js"/><link as="script" rel="preload" href="/bever1337-site/d83a588b5012f356095002df6c617cb65072a894-a8906dd0ae525a44d123.js"/><link as="script" rel="preload" href="/bever1337-site/component---src-templates-article-index-js-269c3070d826f163fced.js"/><link as="fetch" rel="preload" href="/bever1337-site/page-data/articles/and-then-there-was-script/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/bever1337-site/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="gridLayout-module--wrapper--YhU-z"><nav class="gridLayout-module--header--qSmcj navigation-module--nav--uUStU"><ul class="navigation-module--nav__list--JBqP+"><li class="navigation-module--nav__item--HiHdd"><a href="/bever1337-site/">/index</a><span>front page</span></li><li class="navigation-module--nav__item--HiHdd"><a href="/bever1337-site/articles">/articles</a><span>fake programmer thoughts</span></li><li class="navigation-module--nav__item--HiHdd"><a href="/bever1337-site/about">/about</a><span>about bever1337</span></li><li class="navigation-module--nav__item--HiHdd"><a href="/bever1337-site/licenses">/licenses</a><span></span></li></ul></nav><main class="gridLayout-module--body--m1lvC"><p>published: <!-- -->2/18/2022, 9:10:32 PM<!-- -->,<br/>last updated: <!-- -->2/19/2022, 5:12:34 PM</p><h1>Development in the Browser, for Programmers</h1>
+<p>This not-so-new-fangled web thing has staying power. Technologies like <a rel="noreferrer noopener" target="_self" href="https://www.w3.org/wasm/">Wasm</a>, <a rel="noreferrer noopener" target="_self" href="https://html.spec.whatwg.org/multipage/workers.html">Web Workers</a>, <a rel="noreferrer noopener" target="_self" href="https://streams.spec.whatwg.org/">Streams</a>, <a rel="noreferrer noopener" target="_self" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API">WebGL</a>, and <a rel="noreferrer noopener" target="_self" href="https://www.w3.org/TR/webaudio/">Web Audio API</a> are stabilizing while userland frameworks like <a rel="noreferrer noopener" target="_self" href="https://www.qt.io/">QT</a>, <a rel="noreferrer noopener" target="_self" href="https://www.electronjs.org/">Electron</a>, <a rel="noreferrer noopener" target="_self" href="https://unity.com/">Unity</a>, and <a rel="noreferrer noopener" target="_self" href="https://reactnative.dev/">React Native</a> bridge web and native platforms. Naturally, the browser is an interesting space for developers from non-Web fields. But when backend rockstars, folks who pride themselves as &quot;real programmers&quot;, develop their first crossover hit, they struggle to embrace the browser platform. I hear developers say, &quot;Let me skip this altogether!&quot;</p>
+<p>I approached the first drafts of this article as a lover of JavaScript, defender of browser API 🦸‍♀‍. I&#x27;m different and cool. I respect the hard work that goes into frontend development. I&#x27;ve even read <a rel="noreferrer noopener" target="_self" href="https://joequery.me/code/the-self-hating-web-developer/">Joe Query&#x27;s take on the self-hating web developer.</a> I had a chip on my shoulder. In the pretend hierarchy of real programmers, frontend developers are near the bottom, so it felt important to defend browser applications. &quot;It&#x27;s <em>real</em> programming too, darn it!&quot;</p>
+<p>My therapist tells me the cross-pollination of development fields in the browser highlights existing and new needs for this platform. My homework is to synthesize existing knowledge into a holistic crash course on HTML and Web scripting. After establishing the basics, we will look at future changes to the browser platform. My hope is the browser provides for the requirements of all web software.</p>
+<p>This text borrows heavily from The Web Hypertext Application Technology Working Group (WHATWG) specification:</p>
+<ul>
+<li><a rel="noreferrer noopener" target="_self" href="https://html.spec.whatwg.org/multipage/scripting.html">HTML scripting</a></li>
+</ul>
+<h2>&quot;Real&quot; programmers don&#x27;t do this</h2>
+<h3>1. learn JS or JS Browser API</h3>
+<p>&quot;Real&quot; programmers write in their preferred language (C, C++, Rust). They use Wasm as a compiler target and expect a first-class experience. Time is lost when developers must port code or learn new programming languages. &quot;Fake&quot; programmers hold onto cocky self-assuredness-- knowing refusal to learn a programming language is a shallow excuse-- while recognizing the value of exchanging cognitive overhead for code isomorphism.</p>
+<h3>2. install JS frameworks to accomplish their task.</h3>
+<p>&quot;Real programmers&quot; use their preferred frameworks knowing it&#x27;s silly to suggest framework dependency is unique frontend baggage.</p>
+<p>Tasks like interacting with the document API or writing quality HTML carry taboo. Only half-jokingly, I suspect nobody wants to think about the browser. Historically, JS runtimes are inconsistent and feature support varies between browser vendors and versions. Out of necessity, frontend developers also turn to frameworks to patch discrepancies:</p>
+<figure>
+<p><span class="gatsby-resp-image-wrapper" style="position:relative;display:block;margin-left:auto;margin-right:auto;max-width:1080px">
+      <a rel="noopener" target="_blank" class="gatsby-resp-image-link" href="/bever1337-site/static/44de67686eeba944ecddcfeb78d418a0/471ef/npm-trends-render-frameworks.png" style="display:block">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom:78.14814814814815%;position:relative;bottom:0;left:0;background-image:url(&#x27;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAIAAACZeshMAAAACXBIWXMAAAsTAAALEwEAmpwYAAACCklEQVQoz5VT7YrVQAzt+7+Kr+APEQQXRAQ/VlQEhb17bzu3nY9kJslMMjLtrov4Rw+hpJOc0zQ9nbz3zjnvPWKOMYYQumn/N0zM3FqzR9Smd2tGzC05xG2mtS0r47XyYtZ7tydqaxMiisg4tlG13qlZU7UmTStbHXpa1WTUTDtzr61D6jkPMhP1WpVZmU2kC3cik9rrCKNiiAZoCBaCBT+upVjvEwAwQC9FETWj5WwAVvLISx5NTFarqprqw3RuMaJBzjnzPrbaWJT9FY94SoecjqXuT2YeR7uuadfWazNTO9hmncUKN66Va2OpZiatcZWJCm2wLjgvcJnhssDF4ezQzRAXjAssDrctX7c8r3lbC2yUztEtGIFx6r2LAJdrDKcMM5frEdGfSna05wVniPdCG9NaeYvxAuncJE0ppVpr/0/s37xPQkVV/yyYVFFVOVAll9K0HXdHw4PDXO5bTMF7Ij6gqiklEck5IyIR+VElAEgpIeLtxw83X+/uoU5xu5zPp5SgtYaAAPCbTESlFGYOIeAO7z2LuGX+4XxknVY8zcv5mGe4jdnMUkq0I+dMRNu2IQ5d730CePf2zfP335eik11PcXW6vwbi+CXMLMY4zMNMRCISQjiEUkohhFcvXzx7/elnalPXmSjZMIMRjW5VLaWICDMfSzqMVErJOZdSvny+vfl2d4L6C14aoHYM7ilTAAAAAElFTkSuQmCC&#x27;);background-size:cover;display:block"></span>
+  <img class="gatsby-resp-image-image" alt="graph comparing browser render framework downloads" title="graph comparing browser render framework downloads" src="/bever1337-site/static/44de67686eeba944ecddcfeb78d418a0/302a4/npm-trends-render-frameworks.png" srcSet="/bever1337-site/static/44de67686eeba944ecddcfeb78d418a0/01bf6/npm-trends-render-frameworks.png 270w /bever1337-site/static/44de67686eeba944ecddcfeb78d418a0/07484/npm-trends-render-frameworks.png 540w /bever1337-site/static/44de67686eeba944ecddcfeb78d418a0/302a4/npm-trends-render-frameworks.png 1080w /bever1337-site/static/44de67686eeba944ecddcfeb78d418a0/471ef/npm-trends-render-frameworks.png 1185w" sizes="(max-width: 1080px) 100vw, 1080px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0" loading="lazy" decoding="async"/>
+  </a>
+    </span></p>
+<figcaption>
+<p><a rel="noreferrer noopener" target="_self" href="https://www.npmtrends.com/@angular/core-vs-preact-vs-react-vs-vue-vs-mithril">Made with npmtrends</a></p>
+</figcaption>
+</figure>
+<p>The figure suggests many frontend projects rely on complex web frameworks to build the view layer. Frontend developers have also contributed resources to improve dependency distribution and bloat:</p>
+<ul>
+<li><a rel="noreferrer noopener" target="_self" href="https://github.com/WICG/webcomponents">Web Components</a></li>
+<li><a rel="noreferrer noopener" target="_self" href="https://bundlephobia.com/">Bundlephobia</a></li>
+<li><a rel="noreferrer noopener" target="_self" href="https://unpkg.com/">unpkg</a></li>
+</ul>
+<h3>3. re-write JavaScript boilerplate ad nauseam 🤢</h3>
+<p>As we&#x27;ll cover later, the tasks &quot;real&quot; programmers want to accomplish produce lots of JavaScript boilerplate and rely on &quot;glue&quot; to function. Frontend frameworks suggest we are gluttons for repetition, but the declarative and functional approaches of modern web development are well-established for reasons, some of them valid but too lengthy to cover now.</p>
+<h3>4. sacrifice type safety 🦺</h3>
+<p>Nobody will claim compiled code can run without error, but &quot;real&quot; programmers need to use their existing knowledge and preferred compiler to make assertions about the safety of their application.</p>
+<p>JS compilers and transpilers are downloaded approximately 30 million times a day. Frontend developers are looking for alternatives too:</p>
+<figure>
+<p><span class="gatsby-resp-image-wrapper" style="position:relative;display:block;margin-left:auto;margin-right:auto;max-width:1080px">
+      <a rel="noopener" target="_blank" class="gatsby-resp-image-link" href="/bever1337-site/static/b2bbdc310bdeb1451a87c231a3ead075/b67f3/npm-trends-compiler.png" style="display:block">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom:68.51851851851852%;position:relative;bottom:0;left:0;background-image:url(&#x27;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAABtklEQVQ4y41TW47cMAzz/Q/Xv7lAUaCz0zxtx2+JBe1kdnbbLWqAEGNLjCIzxnuPdV3hnEMIAdY55JxQm0JEoNLQtEHJW4OSq2IsBfTEuUwpBa21caw6klWxHKW/pPoZS9qRvEfZZuQ0IaX0kn9pkleY4zieCSIK+ZD0d7znKFQiVBK02c5NjBE5F0ALRDJU6nvSKzSP/eZGccc2UCeoBA4AJqWMkh0gB6R5CAvk+ITwggpRgT6BIcpGFOOTeQnnUD4M+MvVc16BJzclZ4RUEKsg5IZYCPkUL/4VWq/NVWCoXWJAtCv8MsHND6R9RVznHu30QNhmxH3pCOsE+7gjbsvI2WbY6Q3ucUdxOwyt0WrF/69/j8SkUlFb6yaW04dErbXfPn3Ki4sxdc4GaC+6g3v0MPcvGxnrI+5vE5y1z4Kccxe01naPcp9/ESP/Kp7zmVxfmuiCIS2Y1ztizL1L53wvuN5MYYJu4PO2bWfXCfu+/ymY/YJf9x/wR+iC1rqn4DB97gIUpPCyLF2MZxRkvN1u+PZ9QhbAoK5w6084PwSvTsjbOVtGijBS5OqQI+E5RUOu/Q5+A7Z4Sb+DjfGoAAAAAElFTkSuQmCC&#x27;);background-size:cover;display:block"></span>
+  <img class="gatsby-resp-image-image" alt="graph comparing js-a-likes" title="graph comparing js-a-likes" src="/bever1337-site/static/b2bbdc310bdeb1451a87c231a3ead075/302a4/npm-trends-compiler.png" srcSet="/bever1337-site/static/b2bbdc310bdeb1451a87c231a3ead075/01bf6/npm-trends-compiler.png 270w /bever1337-site/static/b2bbdc310bdeb1451a87c231a3ead075/07484/npm-trends-compiler.png 540w /bever1337-site/static/b2bbdc310bdeb1451a87c231a3ead075/302a4/npm-trends-compiler.png 1080w /bever1337-site/static/b2bbdc310bdeb1451a87c231a3ead075/b67f3/npm-trends-compiler.png 1338w" sizes="(max-width: 1080px) 100vw, 1080px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0" loading="lazy" decoding="async"/>
+  </a>
+    </span></p>
+<figcaption>
+<p><a rel="noreferrer noopener" target="_self" href="https://www.npmtrends.com/coffeescript-vs-elm-vs-purescript-vs-typescript-vs-svelte">Made with npmtrends</a></p>
+</figcaption>
+</figure>
+<h2>Re-learn the <code>&lt;script&gt;</code> element</h2>
+<p>The Hypertext Markup Language (HTML) <a rel="noreferrer noopener" target="_self" href="https://html.spec.whatwg.org/dev/scripting.html">script</a> element landed in the HTML 4.01 specification, released on December 24, 1999. <a rel="noreferrer noopener" target="_self" href="https://www.w3.org/TR/html401/interact/scripts.html">Click here to read the original specification.</a> While the browser loads the document, it pauses on <code>&lt;script&gt;</code> elements to evaluate the associated script. A &quot;script&quot; was defined as:</p>
+<blockquote>
+<p>A client-side script is a program that may accompany an HTML document or be embedded directly in it. The program executes on the client&#x27;s machine when the document loads, or at some other time such as when a link is activated.</p>
+</blockquote>
+<p>Presently, scripts come with a warning:</p>
+<blockquote>
+<p>Authors are encouraged to use declarative alternatives to scripting where possible, as declarative mechanisms are often more maintainable, and many users disable scripting.</p>
+</blockquote>
+<p>Xah Lee has been compiling the history of the <code>&lt;script&gt;</code> element and provides better detail. His website is NOT available over HTTPS but nothing is asking for personal details. <a rel="noreferrer noopener" target="_self" href="http://xahlee.info/w/history_of_script_tag.html">Use your judgment and read more here</a>.</p>
+<p>Developers can provide several <code>&lt;script&gt;</code> attributes to affect how their JS is interpreted.</p>
+<figure>
+<p><img src="./script-asyncdefer.svg" alt="Script loading with async and defer"/></p>
+<figcaption>
+A schematic diagram from WHATWG spec summarizing how scripts are interpreted.
+<p><a rel="noreferrer noopener" target="_self" href="https://html.spec.whatwg.org/multipage/scripting.html#the-script-element">Originally available here</a></p>
+</figcaption>
+</figure>
+<h3><code>type</code></h3>
+<p>For the sake of explanation, we say there are two flavors of scripts: (1) classic scripts and (2) module scripts. In 2022, modules are also available in additional flavors:</p>
+<figure>
+<p><span class="gatsby-resp-image-wrapper" style="position:relative;display:block;margin-left:auto;margin-right:auto;max-width:443px">
+      <a rel="noopener" target="_blank" class="gatsby-resp-image-link" href="/bever1337-site/static/3ea6445e238bf58b0eef0365c731ed8f/a120c/script_interpretations.png" style="display:block">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom:82.22222222222221%;position:relative;bottom:0;left:0;background-image:url(&#x27;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAA9hAAAPYQGoP6dpAAABkklEQVQ4y52TyYoCQQyG6/3fQ68uBz0o4kGxwbMgCCqoBxVc2n2NfBnSE4oWhgmEqsq+/BWm06kUi0Upl8tSqVSkVCopFwoFqVareu/1evJ+vwWy8xuF0+kk8/lcFouFjEYjPeHxeKxyeL1ea6C/cJB/0rdKg0U+HA5yPB7lcrnIbreTNE0zvl6v8nw+5Xa7qY3ZbjYb2e/3qsfv8Xj8VjgYDKRerysnSZJVYclWq5WeJoO63a7OvtFoSK1Wk9ls9lMhRBYyxHS/3zU7xMk7bhk/swkWzAS+gtfrpa15Yom0HxP+xNEKcfKwsDvOcUXMEWd0rVZL2x0Oh6pjnoFsVoUPxolT3laRn8/nDFbb7VblLDBQJpzXLvhj8O12W5rNpnQ6HV0YBaCPYaQ4tBbyApIZCAEPY95UmLdAuv3asrWWRxaw3+9r5STKZsjFt+CDMicbh+l9R8vlUiaTSfYGp8GwhnM8DwO1X5RHhCf8iRM8HBDGxrzNmDNeBm/fSfCQwMn+Mwns/zIzvh46L8fOZBbnA1Vs1GpO8Km9AAAAAElFTkSuQmCC&#x27;);background-size:cover;display:block"></span>
+  <img class="gatsby-resp-image-image" alt="Script and Module grammar interpretations" title="Script and Module grammar interpretations" src="/bever1337-site/static/3ea6445e238bf58b0eef0365c731ed8f/a120c/script_interpretations.png" srcSet="/bever1337-site/static/3ea6445e238bf58b0eef0365c731ed8f/01bf6/script_interpretations.png 270w /bever1337-site/static/3ea6445e238bf58b0eef0365c731ed8f/a120c/script_interpretations.png 443w" sizes="(max-width: 443px) 100vw, 443px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0" loading="lazy" decoding="async"/>
+  </a>
+    </span></p>
+<figcaption>
+<p>Given:</p>
+<ul>
+<li>Interpretations, <code>U = { C, M, ... }</code>,</li>
+<li>Classic, <code>C = { JavaScript }</code>, and</li>
+<li>Modules, <code>M = { JavaScript, JSON, CSS }</code></li>
+</ul>
+<p>JavaScript is the intersection of classic scripts and module scripts, <code>C∩M = { JavaScript }</code></p>
+</figcaption>
+</figure>
+<p>Clumsily, I define &quot;Classic&quot; scripts by defining the newer &quot;Module&quot; scripts instead. <a rel="noreferrer noopener" target="_self" href="https://tc39.es/ecma262/#sec-source-text-module-records">To the runtime, the difference is in semantics</a>, but developers have higher-level concerns:</p>
+<ul>
+<li>Modules may import from other modules</li>
+<li>Strict mode is enabled by default, similar to prepending <code>&quot;use strict&quot;;</code> to every JavaScript file.</li>
+<li>A module&#x27;s top-level declarations do not pollute the global scope</li>
+<li>Also there&#x27;s some new syntax and junk requiring 5,000 lines of code to fully illustrate. It&#x27;s at least good enough that NodeJS seems to be migrating away from CommonJS.</li>
+</ul>
+<p>The <code>type</code> attribute accepts 3(ish) values so the developer can declare the flavor of JS interpretation:</p>
+<ol>
+<li><code>type</code> attribute is not present <code>&lt;script&gt;</code>, or <code>type</code> is an empty string <code>&lt;script type=&quot;&quot;&gt;</code>. The script element declares its JS is classic. Because both approaches declare identical behavior, this is the previously counted &quot;ish.&quot;</li>
+<li><code>type</code> case-insensitively matches the ASCII string <code>&quot;module&quot;</code>, e.g. <code>&lt;script type=&quot;module&quot;&gt;</code> or <code>&lt;script type=&quot;MoDuLe&quot;&gt;</code> if you want to test your luck and browser adherence to spec. The script element declares its JS is a module script.</li>
+<li><code>type</code> is literally ANYTHING else, e.g. <code>&lt;script type=&quot;literally ANYTHING else&quot;&gt;</code>. This is a &quot;data block&quot; and we won&#x27;t check a glossary to feign familiarity. The script&#x27;s source will not be evaluated.</li>
+</ol>
+<h3><code>src</code></h3>
+<blockquote>
+<p>[Scripts] can be embedded inline, or be imported from an external file using the src attribute</p>
+</blockquote>
+<figure>
+<p><span class="gatsby-resp-image-wrapper" style="position:relative;display:block;margin-left:auto;margin-right:auto;max-width:1080px">
+      <a rel="noopener" target="_blank" class="gatsby-resp-image-link" href="/bever1337-site/static/26491e5392869434ad1ccc2734558405/1320e/javascript_set.png" style="display:block">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom:43.333333333333336%;position:relative;bottom:0;left:0;background-image:url(&#x27;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAA9hAAAPYQGoP6dpAAABHUlEQVQoz12SyaqDQBBF+///S3ARUBduHBYiuFAS58Qx9TgFFZpXULT2HWpQd9+37PuueRyHrOsqRVFIVVXyer2E+H6/msS2bbIsi/I+n48Mw6D8uq5lHEdxiPq+15dpmoQCTdMoqeu6nyFBUQz9AMMsz3PVu7Zt5fF4SBzHEkWRiiwQU4DgpDMzva5L75kK0/M8FXMmNiEEQDO0Z8ajA3Ab204wVsC0aogIgLHnedYTIUUgEwjSNJUkSX7TPJ9PXU0QBFKWpY7tbA8YZVkmYRgq+f1+qylJ8M6u6YqEzx0FrWsKOFs43dAFIES65vR3aLi/Q57ZHcakg2SmnICQAe0D+b+M/9F8nRV3tj8uAGzR/818U8YF546GSOv4Dx/OuEbXVBoZAAAAAElFTkSuQmCC&#x27;);background-size:cover;display:block"></span>
+  <img class="gatsby-resp-image-image" alt="JavaScript set" title="JavaScript set" src="/bever1337-site/static/26491e5392869434ad1ccc2734558405/302a4/javascript_set.png" srcSet="/bever1337-site/static/26491e5392869434ad1ccc2734558405/01bf6/javascript_set.png 270w /bever1337-site/static/26491e5392869434ad1ccc2734558405/07484/javascript_set.png 540w /bever1337-site/static/26491e5392869434ad1ccc2734558405/302a4/javascript_set.png 1080w /bever1337-site/static/26491e5392869434ad1ccc2734558405/1320e/javascript_set.png 1292w" sizes="(max-width: 1080px) 100vw, 1080px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0" loading="lazy" decoding="async"/>
+  </a>
+    </span></p>
+<figcaption>
+<p>A JavaScript source may also include or reference an additional Web Assembly (Wasm) source. Wasm will be covered in more detail later.</p>
+</figcaption>
+</figure>
+<h3><code>async</code></h3>
+<p><code>async</code> may be declared by Classic scripts using the <code>src</code> attribute and Module scripts. When present, the <code>async</code> attribute indicates the browser may fetch the script &quot;in parallel to parsing&quot; to be &quot;evaluated as soon as it is available (potentially before parsing completes).&quot;</p>
+<h3><code>defer</code></h3>
+<p><code>defer</code> may only be declared by Classic scripts using the <code>src</code> attribute. When present, the <code>defer</code> attribute indicates the script should not be evaluated until the document is parsed.</p>
+<h3>An aside regarding hosting</h3>
+<p>As of this writing, the following requirements must be met for web applications using module scripts and scripts containing Wasm binary code:</p>
+<ul>
+<li>An HTML document is the entry point for script loading</li>
+<li>Classic and Module JS scripts fetch and instantiate Wasm</li>
+<li>HTML, JS, and Wasm files are available over HTTP</li>
+</ul>
+<p>A web host is required to (1) <a rel="noreferrer noopener" target="_self" href="https://developer.mozilla.org/en-US/docs/WebAssembly/Concepts#webassembly_goals">respect <code>Same-origin</code> policy</a> for fetching Wasm and (2) <a rel="noreferrer noopener" target="_self" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#other_differences_between_modules_and_standard_scripts">import ES modules</a>. To bypass <code>Same-origin</code> at the expense of modules, very small Wasm modules can be &#x27;inlined&#x27; as UInt8 buffers.</p>
+<h2>Say, &quot;Hello, world!&quot;</h2>
+<p>Like all good tutorials, we move on from the definitions and write &quot;Hello, world!&quot; to the console. We load the following HTML and script in our browser:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;script&gt;
+    console.log(&quot;Hello, world!&quot;)
+  &lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
+<p>While the document is parsed, our classic script is interpreted as a <a rel="noreferrer noopener" target="_self" href="https://tc39.es/ecma262/#sec-notational-conventions">top-level production</a>, and the runtime executes the JS bytecode. We see something like this in the console:</p>
+<pre><code>&gt; &quot;Hello, world!&quot;
+</code></pre>
+<h3>How did that work?</h3>
+<p>Our current understanding is sufficient to develop scripts, but sometimes it&#x27;s satisfying to look &quot;under the hood.&quot; From the Mozilla Developer Network (MDN), here are the highlights of our runtime:</p>
+<blockquote>
+<p>A call stack is a mechanism for an interpreter... to keep track of its place in a script that calls multiple functions - <a rel="noreferrer noopener" target="_self" href="https://developer.mozilla.org/en-US/docs/Glossary/Call_stack">MDN call stack</a></p>
+</blockquote>
+<blockquote>
+<p>Async operations like promises are put into an event queue, which runs after the main thread has finished processing so that they do not block subsequent JavaScript code from running. The queued operations will complete as soon as possible then return their results to the JavaScript environment. - <a rel="noreferrer noopener" target="_self" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing#the_event_queue">MDN asynchronous JS</a></p>
+</blockquote>
+<blockquote>
+<p>JavaScript has a runtime model based on an event loop, which is responsible for executing the code, collecting and processing events, and executing queued sub-tasks. - <a rel="noreferrer noopener" target="_self" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop">MDN event loop</a></p>
+</blockquote>
+<figure>
+<p><img src="./the_javascript_runtime_environment_example.svg" alt="Illustration of the JS runtime"/></p>
+<figcaption>
+<p><a rel="noreferrer noopener" target="_self" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#visual_representation">A visual representation of the JS runtime, created by the Mozilla Developer Network.</a></p>
+</figcaption>
+</figure>
+<p>For more specificity, WHATWG provides us <a rel="noreferrer noopener" target="_self" href="https://html.spec.whatwg.org/multipage/webappapis.html#event-loops">Event loops definitions</a>:</p>
+<blockquote>
+<p>To coordinate events, user interaction, scripts, rendering, networking, and so forth, user agents must use event loops... Each agent has an associated event loop, which is unique to that agent.</p>
+</blockquote>
+<blockquote>
+<p>The event loop of a similar-origin window agent is known as a window event loop. The event loop of a dedicated worker agent, shared worker agent, or service worker agent is known as a worker event loop. And the event loop of a worklet agent is known as a worklet event loop.</p>
+</blockquote>
+<p>Frontend developers (correctly) say scripts are &quot;single-threaded&quot; because threading is abstracted by an event loop. For simplicity, the &quot;main&quot; thread represents the default event loop where the runtime evaluates scripts. Going forward, we will say the &quot;default event loop&quot; is a platform-agnostic main thread, and the &quot;window event loop&quot; is a browser-specific main thread.</p>
+<p>Highlights of our runtime:</p>
+<ol>
+<li>The runtime uses an event loop to execute scripts as though they were single-threaded</li>
+<li>Synchronous operations always block evaluation</li>
+<li>Asynchronous operations never block evaluation. Async is different from Futures because the loop is never halted</li>
+<li>Developers create and extend async behavior using promises or runtime-specific APIs like timers, fetch, or storage. Language features like <code>async</code> or <code>yield</code> and generators give developers the primitives to express complex async logic.</li>
+<li>Parallelism can only be introduced with additional event loops, i.e. Web Workers</li>
+</ol>
+<h2>Get weird with the runtime</h2>
+<p>If readers politely assume the previous &quot;Hello, world!&quot; example executed, then I certify us, runtime experts. We&#x27;ve deployed the foundational technology of modern, browser applications. To keep things exciting, let&#x27;s introduce two additional technologies:</p>
+<h3>1. Workers</h3>
+<p>Great care is made to avoid blocking tasks, tasks that are synchronous and halt crucial function calls like DOM updates. Sometimes a feature of an application is not relevant to the default loop, for example, long-running tasks, network behavior, persistent storage, or stream processing. From the <a rel="noreferrer noopener" target="_self" href="https://html.spec.whatwg.org/multipage/workers.html">Web workers specification on WHATWG</a>:</p>
+<blockquote>
+<p>[Workers are] for running scripts in the background independently of any user interface scripts. This allows for long-running scripts that are not interrupted by scripts that respond to clicks or other user interactions, and allows long tasks to be executed without yielding to keep the page responsive... Generally, workers are expected to be long-lived, have a high start-up performance cost, and a high per-instance memory cost.</p>
+</blockquote>
+<p>To create and start the first web worker from the default loop, we simply pass the URL of a script to the <code>Worker</code> constructor:</p>
+<pre><code class="language-javascript">const hardWorker = new Worker(&quot;worker.js&quot;)
+</code></pre>
+<p><code>hardWorker</code> now runs in a separate, worker event loop from the calling script and can conveniently instantiate additional workers. The only interface between workers, and thus event loops, is an event-based messaging API. The return value of the worker constructor provides an API to post messages to the worker and event emitters to receive errors and messages.</p>
+<h3>2. WebAssembly (Wasm)</h3>
+<p><a rel="noreferrer noopener" target="_self" href="https://www.w3.org/wasm/">From the WebAssembly Working Group</a>:</p>
+<blockquote>
+<p>[Wasm] is a binary instruction format for a stack-based virtual machine. Wasm is designed as a portable target for compilation of high-level languages...</p>
+</blockquote>
+<blockquote>
+<p>The mission... is to standardize a size- and load-time-efficient format and execution environment, allowing compilation to the web with consistent behavior...</p>
+</blockquote>
+<p>Developers must use the JS <a rel="noreferrer noopener" target="_self" href="https://www.w3.org/TR/wasm-web-api/">WebAssembly Web API</a> to load and instantiate Wasm binary code into the runtime. As a result, the JS and Wasm codes are predictably executed on the same event loop.</p>
+<p>Wasm might be included in a script because:</p>
+<ul>
+<li>it&#x27;s represented as a compact, low-level code for fast parsing and interpretation compared to JS</li>
+<li>Wasm performance is predictable, Wasm is cross-platform</li>
+<li>the inclusion of a Wasm compiler step lets developers make assertions about their code, e.g. type safety, using their preferred language and tools</li>
+</ul>
+<p>Developers should not choose Wasm for:</p>
+<ul>
+<li>speed</li>
+</ul>
+<p>The simplest example of loading Wasm is provided <a rel="noreferrer noopener" target="_self" href="https://raw.githubusercontent.com/mdn/webassembly-examples/master/js-api-examples/instantiate-streaming.html">here by MDN</a>:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;Wasm instantiateStreaming() test&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;script&gt;
+      var importObject = { imports: { imported_func: arg =&gt; console.log(arg) } }
+
+      WebAssembly.instantiateStreaming(fetch(&quot;simple.wasm&quot;), importObject).then(
+        obj =&gt; obj.instance.exports.exported_func()
+      )
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2>Design a modern, browser application</h2>
+<p>Having covered the basics, we will design a modern, browser application. We begin with these assertions about our application and platform:</p>
+<ol>
+<li>A web host serves HTML, JS, and Wasm files</li>
+<li>Developers use JS to load and instantiate Wasm into the calling script&#x27;s loop. This is available on the default loop and in worker loops.</li>
+<li>The only way to introduce parallelism to a script is by creating the first Web Worker from the default loop.</li>
+<li>Workers can create other workers</li>
+<li>Workers can ONLY communicate through a scheduled messaging API</li>
+<li>Only the window loop may access the DOM or Shadow DOMs</li>
+<li>Wasm cannot interact with any high-level API</li>
+</ol>
+<h3>Software design pain points</h3>
+<p>Earlier, I bogusly claimed what real developers do and don&#x27;t do. To re-summarize:</p>
+<ol>
+<li>Write JS</li>
+<li>Use frameworks (There&#x27;s nothing worth re-analyzing for this pain point)</li>
+<li>Re-write boilerplate</li>
+<li>Sacrifice type safety</li>
+</ol>
+<p>Thankfully, Wasm and web spec contributors are hard at work. Proposals have been authored to remove these pain points.</p>
+<h4>Wasm Modules</h4>
+<p>Post-MVP <a rel="noreferrer noopener" target="_self" href="https://github.com/WebAssembly/proposals/issues/12">Wasm proposal 12</a> supports loading Wasm as a fully-featured module. Assuming adoption, developers can safely load Wasm modules with, or without, JS.</p>
+<p>Wasm module loading:</p>
+<pre><code class="language-html">&lt;script type=&quot;module&quot; src=&quot;foo.wasm&quot;&gt;
+</code></pre>
+<pre><code class="language-javascript">import &quot;foo.wasm&quot;
+</code></pre>
+<h4>Wasm High-Level API</h4>
+<p>Since the Document API is not exposed to Wasm, we use JavaScript &quot;glue&quot; to interface with high-level API, for example, to update the document. Fetch, Navigator, Audio, XHR, Promise, setTimeout, and so on until the example is made are also unexposed. Wasm cannot interact with any high-level API! &quot;Real&quot; programmers must learn to apply the JS foot gun safety that their frontend colleagues have been practicing. The runtime cannot provide type safety, and no amount of &quot;flavor of the week&quot;-to-JS compilation will fix that.</p>
+<p>For thorough understanding, Lin Clark wrote <a rel="noreferrer noopener" target="_self" href="https://hacks.mozilla.org/2019/08/webassembly-interface-types/">this AMAZING article</a> detailing how Wasm interacts with the browser and runtime.</p>
+<h2>Follow along</h2>
+<p>Ideally, readers now have the resources to understand or learn more about the current JS runtime. They know how Wasm is integrated into the JS runtime and the current limitations of that system.</p>
+<ul>
+<li>Wasm modules proposal, <a rel="noreferrer noopener" target="_self" href="https://github.com/WebAssembly/proposals/issues/12">ticket 12</a></li>
+<li>Wasm makes no assumptions about the environment because it is a cross-platform binary code. See Wasm <a rel="noreferrer noopener" target="_self" href="https://github.com/WebAssembly/proposals/issues/71">ticket 71</a>.</li>
+<li>Wasm needs a Garbage Collector before higher-level APIs like Document can be exposed. See Wasm <a rel="noreferrer noopener" target="_self" href="https://github.com/WebAssembly/design/issues/1184">ticket 1184</a> and <a rel="noreferrer noopener" target="_self" href="https://github.com/WebAssembly/design/issues/1079">ticket 1079</a>.</li>
+<li>&quot;A long-standing source of friction between WebAssembly and the rest of the Web platform... is that calling Web APIs from WebAssembly usually requires thunking through JavaScript which hurts performance and adds extra complexity for developers...&quot; - <a rel="noreferrer noopener" target="_self" href="https://github.com/WebAssembly/interface-types/blob/main/proposals/interface-types/Explainer.md#web-idl-integration">The Wasm Web IDL proposal</a></li>
+</ul> </main><footer class="gridLayout-module--footer--dV8Ep "><hr/><p>@bever1337/bever1337-site v1.0.0 revision: 227c442<!-- -->, Copyright (C) 2022 Bever1337</p><a href="https://github.com/bever1337/bever1337-site" rel="noreferrer noopener" target="_self">source</a> <a href="https://github.com/bever1337/bever1337-site/blob/main/LICENSE" rel="noreferrer noopener" target="_self">license</a></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/articles/and-then-there-was-script";window.___webpackCompilationHash="071255c7530dbfbace20";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-8f65e58e51d3fc1bf4b6.js"],"app":["/app-87ddfbab5f29060bd044.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4ffd9a85c91734135198.js"],"component---src-pages-about-js":["/component---src-pages-about-js-506a25e8d345cbf5ac9c.js"],"component---src-pages-index-js":["/component---src-pages-index-js-b40884a8f474c2764d40.js"],"component---src-pages-licenses-js":["/component---src-pages-licenses-js-fdd24958240a158709e8.js"],"component---src-templates-article-index-js":["/component---src-templates-article-index-js-269c3070d826f163fced.js"],"component---src-templates-articles-index-js":["/component---src-templates-articles-index-js-ea7ee04a6154d214a585.js"]};/*]]>*/</script><script src="/bever1337-site/polyfill-8f65e58e51d3fc1bf4b6.js" nomodule=""></script><script src="/bever1337-site/component---src-templates-article-index-js-269c3070d826f163fced.js" async=""></script><script src="/bever1337-site/d83a588b5012f356095002df6c617cb65072a894-a8906dd0ae525a44d123.js" async=""></script><script src="/bever1337-site/app-87ddfbab5f29060bd044.js" async=""></script><script src="/bever1337-site/framework-76a77e396abedac0f814.js" async=""></script><script src="/bever1337-site/webpack-runtime-bfb457c7f5acd796a58a.js" async=""></script></body></html>
